@@ -1,7 +1,8 @@
 import re
 from os import path, getenv
 from .runner import GrackleRunner
-from ..trainer.bitwuzla.domain import DEFAULTS, CONDITIONS
+#from ..trainer.bitwuzla.domain import DEFAULTS, CONDITIONS
+from grackle.trainer.bitwuzla.default import DefaultDomain
 
 BWZ_BINARY = "bitwuzla"
 BWZ_STATIC = "-v" # -t=1 -l=1 --smt2
@@ -44,7 +45,8 @@ class BitwuzlaRunner(GrackleRunner):
    def __init__(self, config={}):
       GrackleRunner.__init__(self, config)
       self.default("penalty", 100000000)
-      self.conds = self.conditions(CONDITIONS)
+      self.default_domain(DefaultDomain)
+      #self.conds = self.conditions(CONDITIONS)
 
    def args(self, params):
       def one(arg, val):
@@ -59,7 +61,7 @@ class BitwuzlaRunner(GrackleRunner):
       if "timeout" in self.config:
          t = self.config["timeout"]
          timeout = TIMEOUT % (t+1)
-         limit = f" -t={t}"
+         limit = f" -t={t*1000}"
       else:
          timeout = ""
          limit = ""
@@ -84,19 +86,22 @@ class BitwuzlaRunner(GrackleRunner):
       return status in BWZ_OK
       #return (result in BWZ_OK) and (result[1] < self.config["timeout"])
 
-   def clean(self, params):
-      # clean default values
-      params = {x:params[x] for x in params if params[x] != DEFAULTS[x]}
-      # clean conditioned arguments
-      delme = set()
-      for x in params:
-         if x not in self.conds:
-            continue
-         for y in self.conds[x]:
-            if y in params and params[y] not in self.conds[x][y]:
-               delme.add(x)
-               break
-      for x in delme:
-         del params[x]
-      return params
+   #def clean(self, params):
+   #   # clean default values
+   #   params = {x:params[x] for x in params if params[x] != DEFAULTS[x]}
+   #   # clean conditioned arguments
+   #   delme = set()
+   #   for x in params:
+   #      if x not in self.conds:
+   #         continue
+   #      for y in self.conds[x]:
+   #         if y in params and params[y] not in self.conds[x][y]:
+   #            delme.add(x)
+   #            break
+   #   for x in delme:
+   #      del params[x]
+   #   return params
 
+   def clean(self, params):
+      params = {x:params[x] for x in params if params[x] != self.domain.defaults[x]}
+      return params
