@@ -5,7 +5,7 @@ from .runner import GrackleRunner
 from grackle.trainer.bitwuzla.default import DefaultDomain
 
 BWZ_BINARY = "bitwuzla"
-BWZ_STATIC = "-v" # -t=1 -l=1 --smt2
+BWZ_STATIC = "-v -M=4096" # -t=1 -l=1 --smt2
 
 BWZ_OK = ['sat', 'unsat']
 BWZ_FAILED = ['unknown']

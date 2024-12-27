@@ -83,6 +83,14 @@
 #nl_rlv_assert_bounds {yes,no} [%(nl_rlv_assert_bounds)s]
 #nl_rlv {none,interleave,always} [%(nl_rlv)s]
 
+# removed 27-12-2024
+#unconstrained_simp {yes,no} [%(unconstrained_simp)s]
+#solve_bv_as_int {off,sum,iand,bv,bitwise} [%(solve_bv_as_int)s]
+#check_unsat_cores {yes,no} [%(check_unsat_cores)s]
+#minimal_unsat_cores {yes,no} [%(minimal_unsat_cores)s]
+#model_cores {none,simple,non_implied} [%(model_cores)s]
+#unsat_cores_mode {off,sat_proof,assumptions} [%(unsat_cores_mode)s]
+
 PARAMS = """
 abstract_values {yes,no} [%(abstract_values)s]
 cbqi {yes,no} [%(cbqi)s]
@@ -118,7 +126,6 @@ check_interpolants {yes,no} [%(check_interpolants)s]
 check_models {yes,no} [%(check_models)s]
 check_proofs {yes,no} [%(check_proofs)s]
 check_synth_sol {yes,no} [%(check_synth_sol)s]
-check_unsat_cores {yes,no} [%(check_unsat_cores)s]
 cond_var_split_quant {off,on,agg} [%(cond_var_split_quant)s]
 conjecture_gen {yes,no} [%(conjecture_gen)s]
 cons_exp_triggers {yes,no} [%(cons_exp_triggers)s]
@@ -173,11 +180,9 @@ macros_quant_mode {all,ground,ground_uf} [%(macros_quant_mode)s]
 mbqi {yes,no} [%(mbqi)s]
 mbqi_interleave {yes,no} [%(mbqi_interleave)s]
 mbqi_one_inst_per_round {yes,no} [%(mbqi_one_inst_per_round)s]
-minimal_unsat_cores {yes,no} [%(minimal_unsat_cores)s]
 minisat_dump_dimacs {yes,no} [%(minisat_dump_dimacs)s]
 minisat_simplification {all,clause_elim,none} [%(minisat_simplification)s]
 miniscope_quant {off,conj,fv,conj_and_fv,agg} [%(miniscope_quant)s]
-model_cores {none,simple,non_implied} [%(model_cores)s]
 model_var_elim_uneval {yes,no} [%(model_var_elim_uneval)s]
 multi_trigger_cache {yes,no} [%(multi_trigger_cache)s]
 multi_trigger_linear {yes,no} [%(multi_trigger_linear)s]
@@ -206,7 +211,6 @@ simp_ite_compress {yes,no} [%(simp_ite_compress)s]
 simp_with_care {yes,no} [%(simp_with_care)s]
 simplification_bcp {yes,no} [%(simplification_bcp)s]
 simplification {none,batch} [%(simplification)s]
-solve_bv_as_int {off,sum,iand,bv,bitwise} [%(solve_bv_as_int)s]
 solve_real_as_int {yes,no} [%(solve_real_as_int)s]
 sort_inference {yes,no} [%(sort_inference)s]
 static_learning {yes,no} [%(static_learning)s]
@@ -220,8 +224,6 @@ uf_lazy_ll {yes,no} [%(uf_lazy_ll)s]
 uf_ss_fair {yes,no} [%(uf_ss_fair)s]
 uf_ss_fair_monotone {yes,no} [%(uf_ss_fair_monotone)s]
 uf_ss {full,no_minimal,none} [%(uf_ss)s]
-unconstrained_simp {yes,no} [%(unconstrained_simp)s]
-unsat_cores_mode {off,sat_proof,assumptions} [%(unsat_cores_mode)s]
 user_pat {use,trust,strict,resort,ignore,interleave} [%(user_pat)s]
 user_pool {use,trust,ignore} [%(user_pool)s]
 var_elim_quant {yes,no} [%(var_elim_quant)s]
@@ -325,7 +327,7 @@ DEFAULTS = {
    'check_models': 'no',
    'check_proofs': 'no',
    'check_synth_sol': 'no',
-   'check_unsat_cores': 'no',
+   #'check_unsat_cores': 'no',
    'cond_var_split_quant': 'on',
    'conjecture_gen': 'no',
    'cons_exp_triggers': 'no',
@@ -380,11 +382,11 @@ DEFAULTS = {
    'mbqi': 'no',
    'mbqi_interleave': 'no',
    'mbqi_one_inst_per_round': 'no',
-   'minimal_unsat_cores': 'no',
+   #'minimal_unsat_cores': 'no',
    'minisat_dump_dimacs': 'no',
    'minisat_simplification': 'all',
    'miniscope_quant': 'conj_and_fv',
-   'model_cores': 'none',
+   #'model_cores': 'none',
    'model_var_elim_uneval': 'yes',
    'multi_trigger_cache': 'no',
    'multi_trigger_linear': 'yes',
@@ -413,7 +415,7 @@ DEFAULTS = {
    'simp_with_care': 'no',
    'simplification_bcp': 'no',
    'simplification': 'batch',
-   'solve_bv_as_int': 'off',
+   #'solve_bv_as_int': 'off',
    'solve_real_as_int': 'no',
    'sort_inference': 'no',
    'static_learning': 'yes',
@@ -427,8 +429,8 @@ DEFAULTS = {
    'uf_ss_fair': 'yes',
    'uf_ss_fair_monotone': 'no',
    'uf_ss': 'full',
-   'unconstrained_simp': 'no',
-   'unsat_cores_mode': 'off',
+   #'unconstrained_simp': 'no',
+   #'unsat_cores_mode': 'off',
    'user_pat': 'trust',
    'user_pool': 'trust',
    'var_elim_quant': 'yes',
