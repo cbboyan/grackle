@@ -40,7 +40,7 @@ class Z3Runner(GrackleRunner):
       status = result["status"]
       runtime = result["runtime"]
       quality = 10+int(1000*runtime) if ok else self.config["penalty"]
-      resources = result["rlimit-count"]
+      resources = result["rlimit-count"] if "rlimit-count" in result else quality
       return [quality, runtime, status, resources]
 
    def success(self, result):
