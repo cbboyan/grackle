@@ -16,7 +16,7 @@ class Z3Runner(GrackleRunner):
       #self.conds = self.conditions(CONDITIONS)
 
       limit = self.config["timeout"]
-      self._z3 = Z3(limit=f"T{limit}", complete=False)
+      self._z3 = Z3(limit=f"T{limit}-M4", complete=False)
 
    def args(self, params):
       prefix = []
@@ -46,3 +46,6 @@ class Z3Runner(GrackleRunner):
    def success(self, result):
       return result in self._z3.success
 
+   def clean(self, params):
+      params = {x:params[x] for x in params if params[x] != self.domain.defaults[x]}
+      return params
