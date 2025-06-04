@@ -33,7 +33,7 @@ class Z3Runner(GrackleRunner):
       except Exception:
          result = {}
       if not self._z3.valid(result):
-         msg = "\nERROR(Grackle): Error while evaluating on instance %s!\ncommand: %s\nparams: %s\noutput: \n%s\n"%(inst,strat,self.repr(params),"-")
+         msg = "\nERROR(Grackle): Error while evaluating on instance %s!\ncommand: %s\nparams: %s\noutput: \n%s\n"%(inst,strat,self.repr(params),self._z3._output)
          log.fatal(msg)
          return None
       ok = self._z3.solved(result)
