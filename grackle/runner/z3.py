@@ -3,7 +3,7 @@ from solverpy.solver.smt.z3 import Z3
 
 from .. import log
 from .runner import GrackleRunner
-from ..trainer.z3.default import OptionsDomain
+from ..trainer.z3.options import OptionsDomain
 from ..trainer.z3.tactics import TACTICS, BOOLS, DEPTHS
 
 def options(params, i, name, typ, defs):
