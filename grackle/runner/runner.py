@@ -108,6 +108,28 @@ class GrackleRunner(Runner):
       return " ".join(["%s=%s"%(p,params[p]) for p in sorted(params)])
   
    def clean(self, params):
+      assert self.domain
+      # clean default values
+      params = {x:params[x] for x in params if params[x] != self.domain.defaults[x]}
+      # clean conditioned arguments
+      delme = set()
+      idle = False
+
+
+      while not idle:
+         idle = True
+         for x in params:
+            if x not in self._conds:
+               continue
+            for y in self._conds[x]:
+               val = params[y] if y in params else self.domain.defaults[y]
+               if val not in self._conds[x][y]:
+                  delme.add(x)
+                  break
+         for x in delme:
+            del params[x]
+            idle = False
+         delme.clear()
       return params
    
    def run(self, entity, inst):
@@ -131,6 +153,12 @@ class GrackleRunner(Runner):
          self._domain = domains[0]
       elif len(domains) > 1:
          self._domain = MultiDomain(domains)
+      assert self._domain
+      self._conds = {}
+      for (slave,master,domain) in self._domain.conditions:
+         if slave not in self._conds:
+            self._conds[slave] = {}
+         self._conds[slave][master] = domain
          
    def conditions(self, s_conds):
       conds = {}

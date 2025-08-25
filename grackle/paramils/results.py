@@ -15,7 +15,6 @@ def parse(outdir, numRun, getparams=True):
       if getparams:
          params = [p.split("=") for p in last[5:]]
          params = {p[0].strip():p[1].strip("' ") for p in params}                                                         
-   
       return (int(last[2]), float(last[1]), params)                                                                    
    except Exception as e:                                                                                              
       raise Exception(f"Error parsing paramils output (outdir='{outdir}' numRun='{numRun}' last='{last}' params='{params}' e='{e}'")

@@ -34,6 +34,9 @@ class ParamilsTrainer(Trainer):
       cwd = path.join("training", "iter-%03d-%s"%(state.it, conf))
       cwd = path.join(cwd, self.runner.config["nick"]) if "nick" in self.runner.config else cwd
       params = self.runner.recall(conf) if not direct else params
+      if not params: 
+         params = dict(self.runner.domain.defaults)
+         (params, _) = self.runner.domain.split(params)
       algo = "grackle-wrapper.py %s" % repr(json.dumps(self.runner.config))
       scenario = SCENARIO % (algo, state.trainer.runner.config["timeout"], state.trainer.config["timeout"])
       params = reparamils.launch(

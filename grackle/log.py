@@ -83,6 +83,10 @@ def improved(state, conf):
    rep = state.trains.runner.repr(params)
    print("> INVENTED CONFIG: %s: %s" % (conf, rep))
    print(">")
+   strat = state.trains.runner.args(params)
+   strat = "\n".join(f"> {line}" for line in strat.split("\n"))
+   print("> INVENTED STRATEGY: %s:\n%s" % (conf, strat))
+   print(">")
 
 def notnew(state, conf):
    print("> Invented config already known: %s" % state.nicks[conf] if conf in state.nicks else conf)

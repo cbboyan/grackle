@@ -35,13 +35,13 @@ class ActionsDomain(CustomDomain):
       self.add_dep(f"{name}_flag", f"{name}_counter", ACTIVE)
 
    def add_val(self, name):
-      self.add_param(f"{name}_counter", COUNTER, "none"),
-      self.add_param(f"{name}_cond", COND),
-      self.add_param(f"{name}_action", PARAM),
-      self.add_param(f"{name}_value", VAL),
-      self.add_dep(f"{name}_cond", f"{name}_counter", ACTIVE),
-      self.add_dep(f"{name}_action",f"{name}_counter", ACTIVE),
-      self.add_dep(f"{name}_value", f"{name}_counter", ACTIVE),
+      self.add_param(f"{name}_counter", COUNTER, "none")
+      self.add_param(f"{name}_cond", COND)
+      self.add_param(f"{name}_action", PARAM)
+      self.add_param(f"{name}_value", VAL)
+      self.add_dep(f"{name}_cond", f"{name}_counter", ACTIVE)
+      self.add_dep(f"{name}_action",f"{name}_counter", ACTIVE)
+      self.add_dep(f"{name}_value", f"{name}_counter", ACTIVE)
  
 FLAG="""
 reuse_denials

@@ -15,7 +15,7 @@ class CustomDomain(GrackleDomain):
    def add_param(self, name, domain, default=None):
       assert(default or not isinstance(domain,str))
       self._params[name] = domain
-      self._defaults[name] = default or domain[0]
+      self._defaults[name] = str(default or domain[0])
 
    def add_dep(self, slave, master, values):
       self._conditions.append((slave, master, values))

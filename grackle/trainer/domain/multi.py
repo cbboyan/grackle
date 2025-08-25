@@ -31,7 +31,7 @@ class MultiDomain(CustomDomain):
 
    def split(self, params):
       fixed = {}
-      for domain in self.domains:
+      for domain in self._domains:
          (params, fixed0) = domain.split(params)
          fixed.update(fixed0)
       return (params, fixed)

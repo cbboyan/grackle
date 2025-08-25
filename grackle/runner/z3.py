@@ -3,7 +3,42 @@ from solverpy.solver.smt.z3 import Z3
 
 from .. import log
 from .runner import GrackleRunner
-from ..trainer.z3.default import DefaultDomain
+from ..trainer.z3.default import OptionsDomain
+from ..trainer.z3.tactics import TACTICS, BOOLS, DEPTHS
+
+def options(params, i, name, typ, defs):
+   if name not in defs:
+      return []
+   opts = []
+   for (n,arg) in enumerate(defs[name]):
+      param = f"t__t{i}__{typ}{n}"
+      assert param in params
+      opts.append(f":{arg} {params[param]}")
+   return opts
+
+def tactic(params, i):
+   master = f"t__t{i}" 
+   assert master in params
+   name = TACTICS[int(params[master])]
+   opts = []
+   opts.extend(options(params, i, name, "bool", BOOLS)) 
+   opts.extend(options(params, i, name, "depth", DEPTHS))
+   if opts:
+      return f"(or-else (using-params {name} {' '.join(opts)}) skip)"
+   else:
+      return f"(or-else {name} skip)"
+
+def tactical(params):
+   if "t__count" not in params:
+      return None
+   n_count = int(params["t__count"])
+   ts = []
+   for i in range(n_count):
+      ts.append(tactic(params, i))
+   if not ts:
+      return None
+   ts.append("smt")
+   return f"(then {' '.join(ts)})"
 
 class Z3Runner(GrackleRunner):
    
@@ -12,17 +47,23 @@ class Z3Runner(GrackleRunner):
       self.default("penalty", 100000000)
       penalty = self.config["penalty"]
       self.default("penalty.error", penalty*1000)
-      self.default_domain(DefaultDomain)
+      self.default_domain(OptionsDomain)
       #self.conds = self.conditions(CONDITIONS)
 
       limit = self.config["timeout"]
       self._z3 = Z3(limit=f"T{limit}-M4", complete=False)
 
    def args(self, params):
-      prefix = []
+      options = []
       for x in params:
-         prefix.append(f"(set-option :{x} {params[x]})")
-      return "\n".join(prefix)
+         if not x.startswith("t__"):
+            options.append(f"(set-option :{x} {params[x]})")
+      options = "\n".join(options)
+      tac = tactical(self.domain.defaults | params)
+      if tac is None:
+         return options
+      else:
+         return f"{options}\n\n;USING: {tac}"
    
    def run(self, entity, inst):
       params = entity if self.config["direct"] else self.recall(entity)
@@ -45,7 +86,3 @@ class Z3Runner(GrackleRunner):
 
    def success(self, result):
       return result in self._z3.success
-
-   def clean(self, params):
-      params = {x:params[x] for x in params if params[x] != self.domain.defaults[x]}
-      return params

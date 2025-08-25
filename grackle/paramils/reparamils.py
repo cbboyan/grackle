@@ -12,6 +12,7 @@ def reparamils(scenariofile, outdir, cwd, binary="param_ils_2_3_run.rb", count=1
       if open(os.path.join(cwd,currentInit)).read().strip():
          arg.extend(["-init", currentInit])
       outlog = open((out % numRun) if out else os.devnull, "w")
+      outlog.write(f"# CMD: {' '.join(arg)}\n")
       return subprocess.Popen(arg,stdout=outlog,close_fds=True,cwd=cwd)
 
    #if not out:
