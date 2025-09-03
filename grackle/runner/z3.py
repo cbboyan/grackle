@@ -59,11 +59,12 @@ class Z3Runner(GrackleRunner):
          if not x.startswith("t__"):
             options.append(f"(set-option :{x} {params[x]})")
       options = "\n".join(options)
+      assert self.domain
       tac = tactical(self.domain.defaults | params)
       if tac is None:
          return options
       else:
-         return f"{options}\n\n;USING: {tac}"
+         return f"{options}\n\n;(check-sat-using {tac})"
    
    def run(self, entity, inst):
       params = entity if self.config["direct"] else self.recall(entity)
