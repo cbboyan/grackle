@@ -246,6 +246,73 @@ class TestDefaultDomain:
         assert "neg_ext " in out
 
 
+# ── split() / join() for staged tuning ───────────────────────────────────────
+
+class TestSplitJoin:
+
+    def _full_params(self):
+        return dict(DefaultDomain().defaults)
+
+    def test_core_split_keeps_own_params(self):
+        d = CoreDomain()
+        params = self._full_params()
+        mine, other = d.split(params)
+        assert set(mine) == set(d.params)
+        assert "tord" not in mine       # ordering param
+        assert "slots" not in mine      # heuristic param
+
+    def test_ordering_split_keeps_own_params(self):
+        d = OrderingDomain()
+        params = self._full_params()
+        mine, other = d.split(params)
+        assert set(mine) == set(d.params)
+        assert "sel" not in mine        # core param
+        assert "slots" not in mine      # heuristic param
+
+    def test_heuristic_split_keeps_own_params(self):
+        d = HeuristicDomain()
+        params = self._full_params()
+        mine, other = d.split(params)
+        assert set(mine) == set(d.params)
+        assert "sel" not in mine        # core param
+        assert "tord" not in mine       # ordering param
+
+    def test_sine_split_keeps_own_params(self):
+        d = SineDomain()
+        params = dict(SineDomain().defaults)
+        params.update({"sel": "SelectNoLiterals", "tord": "LPO4"})
+        mine, other = d.split(params)
+        assert set(mine) == set(d.params)
+        assert "sel" not in mine
+        assert "tord" not in mine
+
+    def test_split_partition_is_complete(self):
+        d = CoreDomain()
+        params = self._full_params()
+        mine, other = d.split(params)
+        assert set(mine) | set(other) == set(params)
+        assert set(mine) & set(other) == set()
+
+    def test_join_restores_full_params(self):
+        d = CoreDomain()
+        params = self._full_params()
+        mine, other = d.split(params)
+        restored = d.join(mine, other)
+        assert restored == params
+
+    def test_default_domain_split_chains_subdomains(self):
+        # MultiDomain.split() iterates sub-domains; after all stages,
+        # everything should be either tunable or fixed.
+        d = DefaultDomain()
+        params = self._full_params()
+        # The MultiDomain chains splits: each sub-domain further reduces params
+        # to only its own keys; what's left after chaining is the last domain's keys.
+        # More importantly: split then join should round-trip.
+        tunable, fixed = d.split(params)
+        restored = d.join(tunable, fixed)
+        assert set(restored) == set(params)
+
+
 # ── Runner integration: args() with new domain params ────────────────────────
 
 _RUNNER_CFG = {

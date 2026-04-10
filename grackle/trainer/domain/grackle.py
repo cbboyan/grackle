@@ -78,7 +78,9 @@ class GrackleDomain:
       return params | fixed
 
    def split(self, params):
-      return (params, {})
+      mine  = {k: v for k, v in params.items() if k in self.params}
+      other = {k: v for k, v in params.items() if k not in self.params}
+      return (mine, other)
 
    def dump_param(self, key, defaults=None):
       def default(key):
