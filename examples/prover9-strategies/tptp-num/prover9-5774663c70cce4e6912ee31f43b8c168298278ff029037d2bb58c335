@@ -1,0 +1,39 @@
+clear(back_subsume).
+clear(lex_dep_demod_sane).
+clear(predicate_elim).
+clear(process_initial_sos).
+
+set(check_res_instances).
+set(neg_binary_resolution).
+
+assign(backsub_check, 20000).
+assign(default_weight, 34).
+assign(demod_step_limit, 5000).
+assign(depth_penalty, 2).
+assign(eq_defs, pass).
+assign(lex_dep_demod_lim, 10).
+assign(max_depth, 500).
+assign(max_given, 20000).
+assign(max_kept, 100000).
+assign(max_literals, 10).
+assign(max_vars, 20).
+assign(max_weight, 23).
+assign(nest_penalty, 15).
+assign(new_constants, 9999).
+assign(not_weight, 7).
+assign(or_weight, -1).
+assign(prop_atom_weight, 3).
+assign(sk_constant_weight, -1).
+assign(true_part, 2).
+assign(ur_nucleus_limit, 20).
+assign(var_penalty, 3).
+assign(weight_part, 2).
+
+
+list(actions).
+   kept=100 -> set(reuse_denials).
+end_of_list.
+
+assign(max_megs, 2048).
+clear(print_given).
+

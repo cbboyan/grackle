@@ -1,0 +1,31 @@
+clear(lex_dep_demod_sane).
+
+set(sort_initial_sos).
+
+assign(age_part, 7).
+assign(backsub_check, 1000000).
+assign(constant_weight, 2).
+assign(default_weight, 34).
+assign(demod_step_limit, 500).
+assign(false_part, 0).
+assign(lex_dep_demod_lim, 0).
+assign(max_given, 20000).
+assign(max_kept, 100000).
+assign(max_literals, 15).
+assign(max_vars, 40).
+assign(max_weight, 23).
+assign(nest_penalty, 1).
+assign(new_constants, 5000).
+assign(not_weight, 7).
+assign(or_weight, 67).
+assign(order, kbo).
+assign(sk_constant_weight, -1).
+assign(sos_limit, 10000).
+assign(true_part, 13).
+assign(ur_nucleus_limit, 20).
+assign(var_penalty, -2).
+
+
+assign(max_megs, 2048).
+clear(print_given).
+

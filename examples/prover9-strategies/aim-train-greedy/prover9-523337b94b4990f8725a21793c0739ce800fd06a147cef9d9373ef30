@@ -1,0 +1,36 @@
+clear(lex_dep_demod).
+clear(predicate_elim).
+
+set(neg_binary_resolution).
+
+assign(age_part, 11).
+assign(backsub_check, 40).
+assign(demod_increase_limit, -1).
+assign(depth_penalty, 2).
+assign(eq_defs, fold).
+assign(false_part, 3).
+assign(lex_dep_demod_lim, 1).
+assign(max_depth, 5).
+assign(max_given, 2000).
+assign(max_literals, 15).
+assign(max_vars, 30).
+assign(max_weight, 50).
+assign(nest_penalty, 5).
+assign(not_weight, 1).
+assign(or_weight, 2147483647).
+assign(order, kbo).
+assign(para_lit_limit, 100000).
+assign(prop_atom_weight, -7).
+assign(random_part, 1).
+assign(sos_limit, 100000).
+assign(true_part, 23).
+
+
+list(actions).
+   given=5000 -> clear(reuse_denials).
+   level=100 -> assign(max_depth, 10).
+end_of_list.
+
+assign(max_megs, 2048).
+clear(print_given).
+

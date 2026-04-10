@@ -1,0 +1,35 @@
+set(binary_resolution).
+set(factor).
+set(lex_order_vars).
+set(paramodulation).
+
+assign(age_part, 3).
+assign(backsub_check, 20).
+assign(default_weight, 10).
+assign(demod_increase_limit, 9999).
+assign(lex_dep_demod_lim, 30).
+assign(max_depth, 20000).
+assign(max_given, 1000).
+assign(max_kept, 100000).
+assign(max_literals, 100).
+assign(max_vars, 5).
+assign(nest_penalty, 3).
+assign(new_constants, 5000).
+assign(not_weight, -10).
+assign(or_weight, 2147483647).
+assign(prop_atom_weight, -100).
+assign(sk_constant_weight, -1).
+assign(true_part, 8).
+assign(ur_nucleus_limit, 20).
+assign(var_penalty, 10).
+assign(weight_part, 5).
+
+
+list(keep).
+   -has_equality.
+   -horn.
+end_of_list.
+
+assign(max_megs, 2048).
+clear(print_given).
+

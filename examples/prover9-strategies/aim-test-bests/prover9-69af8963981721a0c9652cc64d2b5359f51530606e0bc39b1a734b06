@@ -1,0 +1,28 @@
+assign(backsub_check, 2000).
+assign(constant_weight, 5).
+assign(default_weight, 1000).
+assign(demod_increase_limit, -1).
+assign(lex_dep_demod_lim, 0).
+assign(max_depth, 1000).
+assign(max_given, 20000).
+assign(max_kept, 100000).
+assign(max_literals, 1500).
+assign(max_vars, 5000).
+assign(max_weight, 40).
+assign(nest_penalty, 1).
+assign(new_constants, 5000).
+assign(not_weight, 20).
+assign(or_weight, 9).
+assign(pick_given_ratio, 13).
+assign(prop_atom_weight, 23).
+assign(sk_constant_weight, -1).
+assign(sos_limit, 10000).
+assign(true_part, 10).
+assign(ur_nucleus_limit, 20).
+assign(var_penalty, 1).
+assign(weight_part, 13).
+
+
+assign(max_megs, 2048).
+clear(print_given).
+

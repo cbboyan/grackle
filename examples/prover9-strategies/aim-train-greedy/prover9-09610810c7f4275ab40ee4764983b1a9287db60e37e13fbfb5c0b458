@@ -1,0 +1,10 @@
+set(pos_hyper_resolution).
+
+assign(demod_step_limit, -1).
+assign(false_part, 1).
+assign(not_weight, 9).
+
+
+assign(max_megs, 2048).
+clear(print_given).
+

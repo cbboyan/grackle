@@ -1,9 +1,9 @@
 import pytest
-from grackle.trainer.eprover.domain import (
-    HEURISTIC_CEFS, N_CEFS,
-    EproverHeuristicDomain, EproverOrderingDomain, EproverCoreDomain,
-    EproverSineDomain, EproverDomain,
-)
+from grackle.trainer.eprover.heuristic import HEURISTIC_CEFS, N_CEFS, HeuristicDomain
+from grackle.trainer.eprover.ordering import OrderingDomain
+from grackle.trainer.eprover.core import CoreDomain
+from grackle.trainer.eprover.sine import SineDomain
+from grackle.trainer.eprover.default import DefaultDomain
 
 
 # ── HEURISTIC_CEFS list ───────────────────────────────────────────────────────
@@ -24,11 +24,11 @@ def test_heuristic_cefs_no_duplicates():
     assert len(cefs) == len(set(cefs))
 
 
-# ── EproverHeuristicDomain ────────────────────────────────────────────────────
+# ── HeuristicDomain ────────────────────────────────────────────────────
 
-class TestEproverHeuristicDomain:
+class TestHeuristicDomain:
     def setup_method(self):
-        self.d = EproverHeuristicDomain()
+        self.d = HeuristicDomain()
 
     def test_params_keys(self):
         keys = set(self.d.params)
@@ -72,11 +72,11 @@ class TestEproverHeuristicDomain:
         assert "heur3 | slots in" in out
 
 
-# ── EproverOrderingDomain ─────────────────────────────────────────────────────
+# ── OrderingDomain ─────────────────────────────────────────────────────
 
-class TestEproverOrderingDomain:
+class TestOrderingDomain:
     def setup_method(self):
-        self.d = EproverOrderingDomain()
+        self.d = OrderingDomain()
 
     def test_params_keys(self):
         assert set(self.d.params) == {"tord", "tord_prec", "tord_weight", "tord_const", "ho_order_kind"}
@@ -106,11 +106,11 @@ class TestEproverOrderingDomain:
         assert "tord_const | tord in" in out
 
 
-# ── EproverCoreDomain ─────────────────────────────────────────────────────────
+# ── CoreDomain ─────────────────────────────────────────────────────────
 
-class TestEproverCoreDomain:
+class TestCoreDomain:
     def setup_method(self):
-        self.d = EproverCoreDomain()
+        self.d = CoreDomain()
 
     def test_has_sel(self):
         assert "sel" in self.d.params
@@ -175,11 +175,11 @@ class TestEproverCoreDomain:
         assert "satcheck " in out
 
 
-# ── EproverSineDomain ─────────────────────────────────────────────────────────
+# ── SineDomain ─────────────────────────────────────────────────────────
 
-class TestEproverSineDomain:
+class TestSineDomain:
     def setup_method(self):
-        self.d = EproverSineDomain()
+        self.d = SineDomain()
 
     def test_params_keys(self):
         assert set(self.d.params) == {"sine", "sineG", "sineh", "sinegf",
@@ -205,11 +205,11 @@ class TestEproverSineDomain:
         assert "sineG | sine in" in out
 
 
-# ── EproverDomain (MultiDomain) ───────────────────────────────────────────────
+# ── DefaultDomain (MultiDomain) ───────────────────────────────────────────────
 
-class TestEproverDomain:
+class TestDefaultDomain:
     def setup_method(self):
-        self.d = EproverDomain()
+        self.d = DefaultDomain()
 
     def test_has_all_subdomain_params(self):
         params = self.d.params
@@ -250,7 +250,7 @@ class TestEproverDomain:
 
 _RUNNER_CFG = {
     "timeout": "1",
-    "domain": "grackle.trainer.eprover.domain.EproverDomain",
+    "domain": "grackle.trainer.eprover.default.DefaultDomain",
 }
 
 
@@ -258,8 +258,8 @@ class TestRunnerArgsNewParams:
     """Smoke-tests for the EproverRunner.args() extensions (no actual E binary needed)."""
 
     def _make_params(self, **overrides):
-        from grackle.trainer.eprover.domain import EproverDomain
-        d = EproverDomain()
+        from grackle.trainer.eprover.default import DefaultDomain
+        d = DefaultDomain()
         p = dict(d.defaults)
         p.update(overrides)
         return p

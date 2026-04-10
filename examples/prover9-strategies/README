@@ -1,0 +1,14 @@
+About
+=====
+
+In this directory, you can find the best strategies for Prover9 developed by
+Grackle during the experiments for LPAR'24 paper.  There are 4 sets of
+strategies in corresponding to different benchmarks.  For each directory, there
+is a text file that contains the greedy cover sequence.  Use this to find out
+which strategy is the best one (the first one in the sequence).
+
+1. `aim-train-greedy`: These are strategies that solve the most training problems.
+2. `aim-test-greedy`: This corresponds to the greedy cover mentioned in the paper.
+3. `aim-test-bests`: These are strategies that solve the most testing problems.
+4. `tptp-num-greedy`: These are the best strategies for TPTP's NUM category.
+

@@ -1,0 +1,30 @@
+BIGGEST GREEDY COVER (2079 entities)
+prover9-539fb92cac5a3c0ee60f14339ad0c768781add7f1cd6dab181a302f3: solves 512
+prover9-7ad8f31470c824c1a5713c46505a43c6ffbb76f0a0d42a1d823e0a41: solves 59, adds 11.52%
+prover9-6129a0d68838434ec0f32ff53d4a67371fe4a32095480422e2ae34bd: solves 22, adds 3.85%
+prover9-9824f0c81e8f067ca4e18a1ad14970501a8adf81af0d3cbec11d0484: solves 10, adds 1.69%
+prover9-237a760d3ae842f0b4ec7ea716fbda5364f4446cf602f295525d6992: solves 7, adds 1.16%
+prover9-442d68870d48845e98efad9dda5fcfdf9b5a851bb292939e4bb0eee0: solves 6, adds 0.98%
+prover9-146d1a591b25584c557add65debf9d51c58237ada6cf88b2fcd4717e: solves 5, adds 0.81%
+prover9-09610810c7f4275ab40ee4764983b1a9287db60e37e13fbfb5c0b458: solves 3, adds 0.48%
+prover9-21bd39a3b09a28ebdc3d33d3f53a5d3ba994969c8e1fe74da6ec7cde: solves 3, adds 0.48%
+prover9-523337b94b4990f8725a21793c0739ce800fd06a147cef9d9373ef30: solves 3, adds 0.48%
+prover9-0d7dc4ad3542412a372e938e50a42d00dcf431cb68df9cc5e54fe1f7: solves 2, adds 0.32%
+prover9-14e6ac94354b38e4003b79f60eff7c0641804290ed6601ef76751955: solves 2, adds 0.32%
+prover9-245ad550fc21093dbdd9b7200576e5f1522c84a4406a07dc680ec85b: solves 2, adds 0.32%
+prover9-6a6be0b31113edb934e2e8483068d9f0876651b53f72e51215005b1f: solves 2, adds 0.31%
+prover9-1ac25b8a0ec9ae93d40de2cfdd991a9d8d892a408539869825f0273e: solves 2, adds 0.31%
+prover9-10c160335f487b701e40dac5fb6834e992603db54a818ccf1f81276b: solves 1, adds 0.16%
+prover9-8e11721a2434e27b3778e9eee79a1e1d12034fe1f7382a12cf5e6b29: solves 1, adds 0.16%
+prover9-bea51966a2a67b87bdd8fbc45f739476ecef76aee3d6e96d588fab5a: solves 1, adds 0.16%
+prover9-02fb20bfc364ccd6c5b02eef41d0c1603a6f17e1c0b2c1552d51d8a4: solves 1, adds 0.16%
+prover9-61a5a73dee300a9c01b80ac34588cee79065c73d5c26f6fbf596886d: solves 1, adds 0.16%
+prover9-f6f1b529e009c6480d8d58ff12faff97b1de48044f940cf8d37fa9ea: solves 1, adds 0.16%
+prover9-33d1bff5ac0778cdb1df0afb86774417e8805ae9d2ca7c8bc864f672: solves 1, adds 0.15%
+prover9-51ce99cfed4b27e4c625c19a2e56844665114dfe6fbeb9f9d527d341: solves 1, adds 0.15%
+prover9-548c9276bd14d29f0e16f8d9e18e86d169cb2531ab13fdd9b0d6deca: solves 1, adds 0.15%
+prover9-c85a32e5394975fc0581fe1d08b1600dd286a5bd2e3a5d8d5cf826de: solves 1, adds 0.15%
+prover9-618aef5aab022f7b5a757fc5b22259b22996b4c0be0fea42f4b19dd3: solves 1, adds 0.15%
+prover9-002ead7bdcb592d2fe187d792d68341b7042d3d55736ebc0226de3d0: solves 1, adds 0.15%
+prover9-c7477f3093d14c26030a3bfb39f5170203b91ac8e6354b7e3d608759: solves 1, adds 0.15%
+TOTAL = 653

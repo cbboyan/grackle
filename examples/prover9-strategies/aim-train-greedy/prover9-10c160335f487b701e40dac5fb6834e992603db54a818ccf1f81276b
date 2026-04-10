@@ -1,0 +1,31 @@
+set(sort_initial_sos).
+
+assign(backsub_check, 20).
+assign(demod_increase_limit, 500).
+assign(demod_step_limit, 100).
+assign(depth_penalty, 7).
+assign(false_part, 1).
+assign(lex_dep_demod_lim, 0).
+assign(max_depth, 1000).
+assign(max_given, 10000).
+assign(max_literals, 50).
+assign(max_vars, 500).
+assign(nest_penalty, 1).
+assign(new_constants, 5000).
+assign(or_weight, 50).
+assign(prop_atom_weight, 34).
+assign(sk_constant_weight, -1).
+assign(sos_limit, 1000).
+assign(true_part, 10).
+assign(ur_nucleus_limit, 20).
+assign(var_penalty, -2).
+assign(weight_part, 100).
+
+
+list(delete).
+   -horn.
+end_of_list.
+
+assign(max_megs, 2048).
+clear(print_given).
+

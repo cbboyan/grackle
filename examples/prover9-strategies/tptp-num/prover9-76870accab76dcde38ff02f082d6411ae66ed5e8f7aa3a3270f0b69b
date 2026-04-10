@@ -1,0 +1,34 @@
+clear(back_subsume).
+clear(lex_dep_demod).
+
+set(para_units_only).
+set(paramodulation).
+
+assign(backsub_check, 40).
+assign(constant_weight, 3).
+assign(demod_increase_limit, 500).
+assign(depth_penalty, 3).
+assign(eq_defs, pass).
+assign(fold_denial_max, 1000).
+assign(lex_dep_demod_lim, 10000).
+assign(max_depth, 5).
+assign(max_given, 10000).
+assign(max_kept, 20000).
+assign(max_weight, 40).
+assign(new_constants, 1).
+assign(not_weight, -1).
+assign(or_weight, 1).
+assign(order, kbo).
+assign(para_lit_limit, 100000).
+assign(prop_atom_weight, -10).
+assign(random_part, 1).
+assign(sos_limit, 1500).
+
+
+list(actions).
+   kept=100 -> set(reuse_denials).
+end_of_list.
+
+assign(max_megs, 2048).
+clear(print_given).
+

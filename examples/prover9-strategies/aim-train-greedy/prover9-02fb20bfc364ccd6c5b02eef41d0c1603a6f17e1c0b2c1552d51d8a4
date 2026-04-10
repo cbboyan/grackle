@@ -1,0 +1,30 @@
+clear(ordered_res).
+
+assign(backsub_check, 20000).
+assign(default_weight, -1000).
+assign(demod_increase_limit, 500).
+assign(demod_step_limit, 500).
+assign(eq_defs, fold).
+assign(fold_denial_max, -1).
+assign(lex_dep_demod_lim, 5).
+assign(max_depth, 5).
+assign(max_given, 1000).
+assign(max_literals, 10).
+assign(max_vars, 5).
+assign(max_weight, 23).
+assign(new_constants, 1).
+assign(not_weight, -100).
+assign(or_weight, 10).
+assign(order, kbo).
+assign(para_lit_limit, 10000).
+assign(pick_given_ratio, 5).
+assign(prop_atom_weight, 0).
+
+
+list(delete).
+   -unit.
+end_of_list.
+
+assign(max_megs, 2048).
+clear(print_given).
+

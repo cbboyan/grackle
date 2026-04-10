@@ -1,0 +1,35 @@
+clear(back_subsume).
+clear(predicate_elim).
+
+set(factor).
+
+assign(age_part, 4).
+assign(backsub_check, 100).
+assign(default_weight, 100).
+assign(demod_increase_limit, 10).
+assign(demod_step_limit, -1).
+assign(depth_penalty, 7).
+assign(eq_defs, fold).
+assign(false_part, 0).
+assign(fold_denial_max, 5).
+assign(max_depth, 5).
+assign(max_given, 10000).
+assign(max_literals, 10).
+assign(max_vars, 100).
+assign(max_weight, 67).
+assign(nest_penalty, 1).
+assign(new_constants, 1).
+assign(not_weight, -50).
+assign(or_weight, 1000).
+assign(order, kbo).
+assign(para_lit_limit, 100000).
+assign(prop_atom_weight, 0).
+assign(random_part, 1).
+assign(sk_constant_weight, -1).
+assign(sos_limit, 100000).
+assign(true_part, 23).
+
+
+assign(max_megs, 2048).
+clear(print_given).
+

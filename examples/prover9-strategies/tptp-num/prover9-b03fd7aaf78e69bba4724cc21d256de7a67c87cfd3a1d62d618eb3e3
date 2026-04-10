@@ -1,0 +1,54 @@
+clear(back_subsume).
+clear(cac_redundancy).
+clear(inverse_order).
+clear(lex_dep_demod_sane).
+clear(para_from_vars).
+clear(process_initial_sos).
+
+set(check_para_instances).
+set(factor).
+set(initial_nuclei).
+set(lex_order_vars).
+set(neg_binary_resolution).
+set(neg_hyper_resolution).
+set(para_units_only).
+set(safe_unit_conflict).
+set(sort_initial_sos).
+set(unit_deletion).
+set(ur_resolution).
+
+assign(age_part, 23).
+assign(backsub_check, 100000).
+assign(constant_weight, -7).
+assign(default_weight, 5).
+assign(demod_increase_limit, 500).
+assign(depth_penalty, -2).
+assign(eq_defs, pass).
+assign(false_part, 8).
+assign(fold_denial_max, 1000).
+assign(lex_dep_demod_lim, 30).
+assign(literal_selection, all_negative).
+assign(max_depth, 40).
+assign(max_given, 1000000).
+assign(max_kept, 1000000).
+assign(max_literals, 5).
+assign(max_vars, 200).
+assign(max_weight, 2).
+assign(nest_penalty, 1).
+assign(new_constants, 3).
+assign(not_weight, -100).
+assign(or_weight, -7).
+assign(pick_given_ratio, 7).
+assign(prop_atom_weight, -1000).
+assign(random_part, 2).
+assign(sk_constant_weight, 0).
+assign(true_part, 2).
+assign(ur_nucleus_limit, 30).
+assign(var_penalty, 500).
+assign(variable_weight, -7).
+assign(weight_part, 5).
+
+
+assign(max_megs, 2048).
+clear(print_given).
+

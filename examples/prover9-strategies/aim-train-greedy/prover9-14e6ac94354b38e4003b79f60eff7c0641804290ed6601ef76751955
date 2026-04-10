@@ -1,0 +1,22 @@
+assign(backsub_check, 100).
+assign(demod_increase_limit, 20).
+assign(depth_penalty, 5).
+assign(eq_defs, fold).
+assign(fold_denial_max, 100).
+assign(max_depth, 2000).
+assign(max_given, 20000).
+assign(max_literals, 1500).
+assign(max_weight, 40).
+assign(not_weight, 7).
+assign(or_weight, 67).
+assign(order, kbo).
+assign(para_lit_limit, 10000).
+assign(pick_given_ratio, 7).
+assign(prop_atom_weight, 23).
+assign(sos_limit, 5000).
+assign(weight_part, 8).
+
+
+assign(max_megs, 2048).
+clear(print_given).
+

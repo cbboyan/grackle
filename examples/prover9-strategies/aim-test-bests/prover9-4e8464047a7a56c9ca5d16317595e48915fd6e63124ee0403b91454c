@@ -1,0 +1,20 @@
+assign(backsub_check, 2000).
+assign(demod_increase_limit, 40).
+assign(demod_step_limit, -1).
+assign(eq_defs, fold).
+assign(lex_dep_demod_lim, 10).
+assign(max_given, 20000).
+assign(max_weight, 23).
+assign(nest_penalty, 1).
+assign(new_constants, 1).
+assign(not_weight, -1).
+assign(or_weight, 50).
+assign(order, kbo).
+assign(para_lit_limit, 10000).
+assign(prop_atom_weight, 20).
+assign(true_part, 0).
+
+
+assign(max_megs, 2048).
+clear(print_given).
+

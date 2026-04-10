@@ -1,0 +1,40 @@
+set(expand_relational_defs).
+
+assign(age_part, 23).
+assign(backsub_check, 40).
+assign(default_weight, 20).
+assign(demod_increase_limit, 9999).
+assign(demod_step_limit, 9999).
+assign(depth_penalty, 5).
+assign(eq_defs, fold).
+assign(fold_denial_max, 5).
+assign(lex_dep_demod_lim, -1).
+assign(max_depth, 2000).
+assign(max_kept, 100000).
+assign(max_vars, 100).
+assign(max_weight, 40).
+assign(new_constants, 40).
+assign(not_weight, -1).
+assign(or_weight, 34).
+assign(order, kbo).
+assign(para_lit_limit, 100000).
+assign(prop_atom_weight, -5).
+assign(random_part, 8).
+assign(sos_limit, -1).
+
+
+list(actions).
+   kept=2000 -> clear(reuse_denials).
+end_of_list.
+
+list(keep).
+   -has_equality & -false.
+end_of_list.
+
+list(delete).
+   -horn & -factor.
+end_of_list.
+
+assign(max_megs, 2048).
+clear(print_given).
+

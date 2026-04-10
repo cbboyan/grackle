@@ -1,0 +1,31 @@
+set(check_res_instances).
+set(pos_hyper_resolution).
+
+assign(age_part, 6).
+assign(backsub_check, 2000).
+assign(default_weight, 10).
+assign(demod_increase_limit, 40).
+assign(depth_penalty, 5).
+assign(eq_defs, fold).
+assign(fold_denial_max, 50).
+assign(max_depth, 15).
+assign(max_given, 20000).
+assign(max_vars, 100).
+assign(max_weight, 40).
+assign(new_constants, 9999).
+assign(not_weight, 3).
+assign(or_weight, 500).
+assign(order, kbo).
+assign(para_lit_limit, 10000).
+assign(pick_given_ratio, 3).
+assign(prop_atom_weight, 3).
+assign(weight_part, 8).
+
+
+list(actions).
+   kept=100 -> set(reuse_denials).
+end_of_list.
+
+assign(max_megs, 2048).
+clear(print_given).
+

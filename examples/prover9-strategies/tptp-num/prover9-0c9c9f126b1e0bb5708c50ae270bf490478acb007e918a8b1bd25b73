@@ -1,0 +1,54 @@
+clear(back_subsume).
+clear(process_initial_sos).
+
+assign(backsub_check, 100).
+assign(constant_weight, 3).
+assign(default_weight, 40).
+assign(demod_increase_limit, 9999).
+assign(eq_defs, fold).
+assign(false_part, 0).
+assign(max_depth, 1000).
+assign(max_given, 20000).
+assign(max_literals, 1000).
+assign(max_vars, 50).
+assign(max_weight, 40).
+assign(nest_penalty, 9999).
+assign(new_constants, 20).
+assign(not_weight, -7).
+assign(order, kbo).
+assign(para_lit_limit, 10000).
+assign(prop_atom_weight, 3).
+assign(sk_constant_weight, 100).
+assign(true_part, 1).
+assign(var_penalty, 40).
+assign(variable_weight, -20).
+assign(weight_part, 5).
+
+
+list(actions).
+   generated=100 -> assign(max_vars, 15).
+   level=10000 -> assign(demod_step_limit, 10000).
+   kept=2000 -> assign(para_lit_limit, 0).
+end_of_list.
+
+list(given_selection).
+   part(hgh0, high, age, literals>=20 & -horn) = 10.
+   part(hgh1, high, random, -ur_resolvent & hyper_resolvent) = 4.
+   part(low0, low, weight, -ur_resolvent | -has_equality) = 4.
+   part(low1, low, random, paramodulant | mixed) = 200.
+   part(default, low, age, all) = 1.
+end_of_list.
+
+list(keep).
+   negative & false.
+   initial & weight>=10.
+end_of_list.
+
+list(delete).
+   depth>=5 & literals<50.
+   factor & weight<5.
+end_of_list.
+
+assign(max_megs, 2048).
+clear(print_given).
+

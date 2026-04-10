@@ -1,0 +1,24 @@
+set(sort_initial_sos).
+
+assign(default_weight, -1000).
+assign(demod_increase_limit, 40).
+assign(demod_step_limit, 10).
+assign(depth_penalty, 5).
+assign(eq_defs, fold).
+assign(fold_denial_max, 1000).
+assign(max_depth, 15).
+assign(max_given, 20000).
+assign(max_weight, 40).
+assign(new_constants, 9999).
+assign(not_weight, -1).
+assign(or_weight, 67).
+assign(order, kbo).
+assign(para_lit_limit, 10000).
+assign(prop_atom_weight, 20).
+assign(true_part, 100).
+assign(weight_part, 8).
+
+
+assign(max_megs, 2048).
+clear(print_given).
+

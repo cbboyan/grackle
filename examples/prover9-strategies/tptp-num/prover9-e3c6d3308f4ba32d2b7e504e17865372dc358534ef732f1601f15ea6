@@ -1,0 +1,8 @@
+assign(eq_defs, fold).
+assign(max_weight, 500).
+assign(new_constants, 3).
+
+
+assign(max_megs, 2048).
+clear(print_given).
+

@@ -1,0 +1,27 @@
+clear(lex_dep_demod_sane).
+
+assign(backsub_check, 100).
+assign(default_weight, 1000).
+assign(demod_increase_limit, 500).
+assign(depth_penalty, 3).
+assign(eq_defs, fold).
+assign(max_depth, 40).
+assign(max_kept, 100000).
+assign(max_literals, 5).
+assign(max_vars, 200).
+assign(max_weight, 23).
+assign(new_constants, 50).
+assign(not_weight, -1).
+assign(or_weight, -1).
+assign(order, kbo).
+assign(para_lit_limit, 10000).
+assign(pick_given_ratio, 5).
+assign(prop_atom_weight, -5).
+assign(sk_constant_weight, 9999).
+assign(var_penalty, -1).
+assign(variable_weight, 0).
+
+
+assign(max_megs, 2048).
+clear(print_given).
+

@@ -1,0 +1,26 @@
+assign(age_part, 100).
+assign(demod_increase_limit, 0).
+assign(demod_step_limit, 5000).
+assign(eq_defs, fold).
+assign(max_given, 20000).
+assign(max_weight, 40).
+assign(nest_penalty, 2).
+assign(new_constants, 1).
+assign(not_weight, -1).
+assign(or_weight, 2147483647).
+assign(order, kbo).
+assign(para_lit_limit, 10000).
+assign(sos_limit, 1000000).
+
+
+list(actions).
+   given=100 -> set(reuse_denials).
+end_of_list.
+
+list(delete).
+   -horn.
+end_of_list.
+
+assign(max_megs, 2048).
+clear(print_given).
+

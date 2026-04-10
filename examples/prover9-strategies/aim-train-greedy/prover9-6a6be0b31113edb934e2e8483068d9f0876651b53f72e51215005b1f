@@ -1,0 +1,34 @@
+clear(lex_dep_demod).
+
+set(binary_resolution).
+set(expand_relational_defs).
+set(neg_binary_resolution).
+
+assign(backsub_check, 100).
+assign(constant_weight, 0).
+assign(default_weight, 9999).
+assign(demod_increase_limit, 0).
+assign(depth_penalty, 9).
+assign(eq_defs, fold).
+assign(false_part, 11).
+assign(fold_denial_max, -1).
+assign(lex_dep_demod_lim, 10000).
+assign(max_depth, 1000).
+assign(max_literals, 1000).
+assign(max_vars, 5).
+assign(max_weight, 67).
+assign(nest_penalty, 1).
+assign(new_constants, 30).
+assign(not_weight, -2).
+assign(or_weight, 200).
+assign(order, kbo).
+assign(para_lit_limit, 100000).
+assign(pick_given_ratio, 3).
+assign(prop_atom_weight, 9999).
+assign(random_part, 5).
+assign(sos_limit, -1).
+
+
+assign(max_megs, 2048).
+clear(print_given).
+

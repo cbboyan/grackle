@@ -1,0 +1,5 @@
+BIGGEST GREEDY COVER (10 entities)
+prover9-89746860ba8bd9288a07dfa198284ef526ca7f4217d6e91bea8d3ba3: solves 83
+prover9-6129a0d68838434ec0f32ff53d4a67371fe4a32095480422e2ae34bd: solves 6, adds 7.23%
+prover9-539fb92cac5a3c0ee60f14339ad0c768781add7f1cd6dab181a302f3: solves 2, adds 2.25%
+TOTAL = 91

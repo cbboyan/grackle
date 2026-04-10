@@ -1,0 +1,52 @@
+clear(lex_dep_demod).
+
+set(pos_hyper_resolution).
+
+assign(backsub_check, 40).
+assign(default_weight, 40).
+assign(demod_increase_limit, 1000000).
+assign(demod_step_limit, -1).
+assign(eq_defs, fold).
+assign(false_part, 3).
+assign(lex_dep_demod_lim, 10000).
+assign(max_depth, 2147483647).
+assign(max_given, 1000).
+assign(max_vars, 5).
+assign(max_weight, 23).
+assign(new_constants, 1).
+assign(not_weight, 2).
+assign(or_weight, 10).
+assign(order, kbo).
+assign(para_lit_limit, 100000).
+assign(pick_given_ratio, 4).
+assign(prop_atom_weight, 10).
+assign(random_part, 1).
+assign(sos_limit, 1000000).
+
+
+list(actions).
+   level=5000 -> clear(reuse_denials).
+   given=1000 -> assign(max_literals, 20).
+   level=5000 -> assign(max_vars, 0).
+end_of_list.
+
+list(given_selection).
+   part(hgh0, high, age, weight<20 & -initial) = 50.
+   part(low0, low, weight, -hyper_resolvent & literals>=2) = 3.
+   part(low1, low, random, negative | literals<20) = 5.
+   part(default, low, age, all) = 1.
+end_of_list.
+
+list(keep).
+   -hyper_resolvent & false.
+   mixed & -mixed.
+end_of_list.
+
+list(delete).
+   variables>=5.
+   literals>=5 & -hyper_resolvent.
+end_of_list.
+
+assign(max_megs, 2048).
+clear(print_given).
+

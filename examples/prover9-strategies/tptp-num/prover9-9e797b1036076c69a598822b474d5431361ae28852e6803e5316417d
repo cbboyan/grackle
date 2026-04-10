@@ -1,0 +1,38 @@
+clear(predicate_elim).
+
+set(factor).
+set(ur_resolution).
+
+assign(age_part, 6).
+assign(backsub_check, 20).
+assign(default_weight, 50).
+assign(demod_increase_limit, 9999).
+assign(depth_penalty, 2).
+assign(fold_denial_max, 1000).
+assign(lex_dep_demod_lim, 10).
+assign(literal_selection, all_negative).
+assign(max_depth, 500).
+assign(max_given, 20000).
+assign(max_kept, 100000).
+assign(max_literals, 1000).
+assign(max_vars, 40).
+assign(max_weight, 20).
+assign(nest_penalty, 1).
+assign(new_constants, 3).
+assign(not_weight, -2).
+assign(or_weight, 200).
+assign(prop_atom_weight, 500).
+assign(sk_constant_weight, -1).
+assign(sos_limit, 5000).
+assign(true_part, 3).
+assign(ur_nucleus_limit, 20).
+assign(var_penalty, 1).
+
+
+list(delete).
+   -horn & -subsumer.
+end_of_list.
+
+assign(max_megs, 2048).
+clear(print_given).
+

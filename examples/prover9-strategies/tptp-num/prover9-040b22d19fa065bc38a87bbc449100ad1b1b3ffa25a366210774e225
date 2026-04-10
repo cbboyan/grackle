@@ -1,0 +1,30 @@
+clear(process_initial_sos).
+
+set(neg_binary_resolution).
+
+assign(backsub_check, 200).
+assign(default_weight, 40).
+assign(demod_increase_limit, 1000000).
+assign(eq_defs, fold).
+assign(false_part, 2).
+assign(lex_dep_demod_lim, 40).
+assign(max_depth, 2147483647).
+assign(max_given, 20000).
+assign(max_kept, 10000).
+assign(max_vars, 99999).
+assign(max_weight, 40).
+assign(not_weight, -1).
+assign(or_weight, 1).
+assign(order, kbo).
+assign(para_lit_limit, 100000).
+assign(pick_given_ratio, 1).
+assign(prop_atom_weight, -10).
+assign(random_part, 4).
+assign(sk_constant_weight, 20).
+assign(sos_limit, 1500).
+assign(variable_weight, 7).
+
+
+assign(max_megs, 2048).
+clear(print_given).
+
