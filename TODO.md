@@ -21,7 +21,7 @@ Also: replace `PYPROVE_BENCHMARKS` with `SOLVERPY_BENCHMARKS` everywhere; replac
 - [x] Refactor `Z3Runner` onto `SolverPyRunner`
 - [x] Rewrite `EproverRunner` — use `solverpy.solver.atp.eprover.E`; drop `pyprove` dependency
 - [ ] Rewrite `LashRunner` — use `solverpy.solver.atp.lash.Lash`
-- [ ] Rewrite `VampireRunner` — use `solverpy.solver.atp.vampire.Vampire`
+- [x] Rewrite `VampireRunner` — use `solverpy.solver.atp.vampire.Vampire`
 - [ ] Rewrite `Cvc5Runner` — use `solverpy.solver.smt.cvc5.Cvc5`
 
 ## 3. Tests for runners
@@ -29,7 +29,7 @@ Also: replace `PYPROVE_BENCHMARKS` with `SOLVERPY_BENCHMARKS` everywhere; replac
 - [x] `tests/test_runner_eprover.py` — 29 tests: `args()`, `clean()`, `success()`, `run()` with mocked solver
 - [x] `tests/test_runner_z3.py` — 28 tests: `args()`, `tactical()`, `success()`, `run()` with mocked solver
 - [ ] `tests/test_runner_lash.py`
-- [ ] `tests/test_runner_vampire.py`
+- [x] `tests/test_runner_vampire.py` — 23 tests
 - [ ] `tests/test_runner_cvc5.py`
 
 ## 4. Migrate trainer domains to GrackleDomain
