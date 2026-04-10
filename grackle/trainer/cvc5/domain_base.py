@@ -1,3 +1,24 @@
+from ..domain.grackle import GrackleDomain, _parse_params, _parse_conditions, _parse_forbiddens
+
+
+class Cvc5BaseDomain(GrackleDomain):
+
+   @property
+   def params(self):
+      return _parse_params(PARAMS)
+
+   @property
+   def defaults(self):
+      return DEFAULTS
+
+   @property
+   def conditions(self):
+      return _parse_conditions(CONDITIONS)
+
+   @property
+   def forbiddens(self):
+      return _parse_forbiddens(FORBIDDENS)
+
 
 PARAMS = """
 full_saturate_quant {yes,no} [%(full_saturate_quant)s] 

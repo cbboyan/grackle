@@ -1,3 +1,25 @@
+from ..domain.grackle import GrackleDomain, _parse_params, _parse_conditions, _parse_forbiddens
+
+
+class BitwuzlaDomain(GrackleDomain):
+
+   @property
+   def params(self):
+      return _parse_params(PARAMS)
+
+   @property
+   def defaults(self):
+      return DEFAULTS
+
+   @property
+   def conditions(self):
+      return _parse_conditions(CONDITIONS)
+
+   @property
+   def forbiddens(self):
+      return _parse_forbiddens(FORBIDDENS)
+
+
 PARAMS = """
 ackermannize {0,1} [%(ackermannize)s]
 beta_reduce {none,fun,all} [%(beta_reduce)s]

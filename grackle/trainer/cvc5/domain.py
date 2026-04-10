@@ -1,3 +1,25 @@
+from ..domain.grackle import GrackleDomain, _parse_params, _parse_conditions, _parse_forbiddens
+
+
+class Cvc5Domain(GrackleDomain):
+
+   @property
+   def params(self):
+      return _parse_params(PARAMS)
+
+   @property
+   def defaults(self):
+      return DEFAULTS
+
+   @property
+   def conditions(self):
+      return _parse_conditions(CONDITIONS)
+
+   @property
+   def forbiddens(self):
+      return _parse_forbiddens(FORBIDDENS)
+
+
 #print_cores_full {yes,no} [%(print_cores_full)s]
 #print_inst_full {yes,no} [%(print_inst_full)s]
 #print_inst {list,num} [%(print_inst)s]

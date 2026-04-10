@@ -37,10 +37,13 @@ Also: replace `PYPROVE_BENCHMARKS` with `SOLVERPY_BENCHMARKS` everywhere; replac
 
 Use `grackle/trainer/z3/options.py` as the template. Replace raw-string `PARAMS/CONDITIONS/FORBIDDENS` dicts with a proper `GrackleDomain` subclass.
 
-- [ ] Migrate `trainer/lash/domain.py`
-- [ ] Migrate `trainer/vampire/` (consolidate or keep `domain.py`, `domain_full.py`, `domain_casc.py` variants as separate classes)
-- [ ] Migrate `trainer/cvc5/` (consolidate or keep `domain_base/regular/uf/all` variants)
-- [ ] Migrate `trainer/bitwuzla/domain.py` (runner already has `DefaultDomain`; align trainer)
+Added `_parse_params`, `_parse_conditions`, `_parse_forbiddens` helpers to `trainer/domain/grackle.py` for parsing legacy raw-string format.
+Removed `domains()` overrides from all paramils trainers — they now use the base `ParamilsTrainer.domains()` which calls `self.runner.domain.dump()`.
+
+- [x] Migrate `trainer/lash/domain.py` — `LashDomain(GrackleDomain)`; 16 tests
+- [x] Migrate `trainer/vampire/` — `VampireDomain`, `VampireFullDomain`, `VampireCascDomain`; 24 tests
+- [x] Migrate `trainer/cvc5/` — `Cvc5BaseDomain`, `Cvc5Domain`; 25 tests
+- [x] Migrate `trainer/bitwuzla/domain.py` — `BitwuzlaDomain(GrackleDomain)`; 21 tests
 - [ ] Rewrite `trainer/eprover/` — new `GrackleDomain` subclasses + `MultiDomain` for staged tuning
 
 ## 5. Add RamParILS trainer

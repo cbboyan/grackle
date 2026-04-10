@@ -1,4 +1,42 @@
 
+def _parse_params(raw):
+   """Parse raw PCS PARAMS string into {name: [values]} dict."""
+   params = {}
+   for line in raw.strip().splitlines():
+      line = line.strip()
+      if not line or line.startswith("#"):
+         continue
+      name = line.split()[0]
+      vals_str = line[line.index("{") + 1 : line.index("}")]
+      params[name] = vals_str.split(",")
+   return params
+
+
+def _parse_conditions(raw):
+   """Parse raw PCS CONDITIONS string into list of (slave, master, values) tuples."""
+   conds = []
+   for line in raw.strip().splitlines():
+      line = line.strip()
+      if not line or "|" not in line or line.startswith("#"):
+         continue
+      slave, rest = line.split("|", 1)
+      master, vals = rest.strip().split(" in ", 1)
+      slave = slave.strip()
+      master = master.strip()
+      vals = [v.strip() for v in vals.strip().strip("{}").split(",")]
+      conds.append((slave, master, vals))
+   return conds
+
+
+def _parse_forbiddens(raw):
+   """Parse raw PCS FORBIDDENS string into list of {param=val,...} strings."""
+   return [
+      line.strip()
+      for line in raw.strip().splitlines()
+      if line.strip() and not line.strip().startswith("#")
+   ]
+
+
 def dotjoin(lst):
    if isinstance(lst, str):
       lst = lst.strip()

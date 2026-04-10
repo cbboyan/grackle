@@ -1,3 +1,20 @@
+from ..domain.grackle import GrackleDomain, _parse_params, _parse_forbiddens
+
+
+class VampireDomain(GrackleDomain):
+
+   @property
+   def params(self):
+      return _parse_params(PARAMS)
+
+   @property
+   def defaults(self):
+      return DEFAULTS
+
+   @property
+   def forbiddens(self):
+      return _parse_forbiddens(FORBIDDENS)
+
 
 REPLACE = {
    "selection" : "-",

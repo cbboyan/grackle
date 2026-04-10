@@ -1,3 +1,16 @@
+from ..domain.grackle import GrackleDomain, _parse_params, _parse_forbiddens
+
+
+class LashDomain(GrackleDomain):
+
+   @property
+   def params(self):
+      return _parse_params(PARAMS)
+
+   @property
+   def defaults(self):
+      return DEFAULTS
+
 
 PARAMS = """
 ALL_DEFS_AS_EQNS {false,true} [%(ALL_DEFS_AS_EQNS)s]
