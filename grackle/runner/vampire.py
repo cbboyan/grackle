@@ -41,7 +41,7 @@ class VampireRunner(GrackleRunner):
    def cmd(self, params, inst):
       params = self.clean(params)
       args = self.args(params)
-      problem = path.join(getenv("PYPROVE_BENCHMARKS", "."), inst)
+      problem = path.join(getenv("SOLVERPY_BENCHMARKS", "."), inst)
       vlimit = V_LIMIT % self.config["timeout"] if "timeout" in self.config else ""
       timeout = TIMEOUT % (self.config["timeout"]+1) if "timeout" in self.config else ""
       cmdargs = f"{timeout}{V_BINARY} {V_STATIC}{vlimit} {args} {problem}"

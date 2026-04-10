@@ -1,7 +1,7 @@
 #!/bin/sh
 
-export PYPROVE_BENCHMARKS=$PWD/benchmarks
-export TPTP=$PYPROVE_BENCHMARKS
+export SOLVERPY_BENCHMARKS=$PWD/benchmarks
+export TPTP=$SOLVERPY_BENCHMARKS
 export LASH_MODE_DIR=$PWD/modes
 
 rm -fr training

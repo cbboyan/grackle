@@ -59,7 +59,7 @@ Solver-specific runners extend `GrackleRunner`:
 
 The `solverpy` solver hierarchy is: `Solver → PluginSolver → SolverPy → ShellSolver → {E, Vampire, Lash, Prover9, Cvc5, Bitwuzla}` (Z3 uses `StdinSolver` instead of `ShellSolver`). Solvers are instantiated with a limit string (e.g., `"T10"` for 10s, `"T10-M4"` for 10s+4GB) and optional `static` args override. `ShellSolver.solve(instance, strategy)` runs `{time} {cmd} {strategy} {instance}` as a subprocess.
 
-Note: grackle uses `PYPROVE_BENCHMARKS` to resolve benchmark paths; solverpy uses `SOLVERPY_BENCHMARKS` — these are different env vars.
+Note: grackle uses `SOLVERPY_BENCHMARKS` to resolve benchmark paths (same as solverpy). The old `PYPROVE_BENCHMARKS` variable has been fully removed.
 
 The `solverpy` pattern replaces `cmd()` + `process()` with a single overridden `run()`:
 
@@ -71,7 +71,7 @@ self._solver = SolverClass(limit=f"T{timeout}", ...)
 def run(self, entity, inst):
     params = entity if self.config["direct"] else self.recall(entity)
     strat = self.args(params)  # build strategy string
-    problem = os.path.join(os.getenv("PYPROVE_BENCHMARKS", "."), inst)
+    problem = os.path.join(os.getenv("SOLVERPY_BENCHMARKS", "."), inst)
     try:
         result = self._solver.solve(problem, strat)
     except Exception:

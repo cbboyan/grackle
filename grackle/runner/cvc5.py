@@ -40,7 +40,7 @@ class Cvc5Runner(GrackleRunner):
    def cmd(self, params, inst):
       args = self.args(params)
       self._args = args
-      problem = path.join(getenv("PYPROVE_BENCHMARKS", "."), inst)
+      problem = path.join(getenv("SOLVERPY_BENCHMARKS", "."), inst)
       rlimit = CVC5_LIMIT % self.config["rlimit"] if "rlimit" in self.config else ""
       timeout = TIMEOUT % self.config["timeout"] if "timeout" in self.config else ""
       cmdargs = f"{timeout}{CVC5_BINARY} {CVC5_STATIC}{rlimit} {args} {problem}"

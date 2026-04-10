@@ -41,7 +41,7 @@ class LashRunner(GrackleRunner):
    def cmd(self, params, inst):
       params = self.clean(params)
       args = self.args(params)
-      problem = path.join(getenv("PYPROVE_BENCHMARKS", "."), inst)
+      problem = path.join(getenv("SOLVERPY_BENCHMARKS", "."), inst)
       timeout = (TIMEOUT % self.config["timeout"]) if "timeout" in self.config else ""
       #cmdargs = f"time {timeout}{L_BINARY} {L_STATIC}{args} {problem}"
       cmdargs = f"time -p {timeout}{L_BINARY} {L_STATIC} {args} {problem}"

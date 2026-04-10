@@ -57,11 +57,10 @@ class State:
 
       def data(name):
          did = ini["%s.data"%name]
-         if did.startswith("pyprove:"):
-            from pyprove import expres
-            bid = did[8:]
-            insts = expres.benchmarks.problems(bid)
-            insts = [path.join(bid,x) for x in insts]
+         if did.startswith("solverpy:"):
+            from solverpy.benchmark.path import bids
+            bid = did[9:]
+            insts = [path.join(bid, x) for x in bids.problems(bid)]
          else:
             insts = open(did).read().strip().split("\n")
             insts = [x.strip() for x in insts]

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export PYPROVE_BENCHMARKS=$PWD/benchmarks
+export SOLVERPY_BENCHMARKS=$PWD/benchmarks
 
 rm -fr training
 

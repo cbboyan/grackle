@@ -57,7 +57,7 @@ class BitwuzlaRunner(GrackleRunner):
    def cmd(self, params, inst):
       params = self.clean(params)
       args = self.args(params)
-      problem = path.join(getenv("PYPROVE_BENCHMARKS", "."), inst)
+      problem = path.join(getenv("SOLVERPY_BENCHMARKS", "."), inst)
       if "timeout" in self.config:
          t = self.config["timeout"]
          timeout = TIMEOUT % (t+1)
