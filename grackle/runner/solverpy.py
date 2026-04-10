@@ -24,7 +24,7 @@ class SolverPyRunner(GrackleRunner):
          result = {}
       if not self._solver.valid(result):
          msg = "\nERROR(Grackle): Error while evaluating on instance %s!\nstrategy: %s\nparams: %s\noutput: \n%s\n" % (
-            inst, strat, self.repr(params), self._solver._output
+            inst, strat, self.repr(params), getattr(self._solver, "_output", "")
          )
          log.fatal(msg)
          return None

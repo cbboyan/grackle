@@ -31,6 +31,7 @@ Also: replace `PYPROVE_BENCHMARKS` with `SOLVERPY_BENCHMARKS` everywhere; replac
 - [x] `tests/test_runner_lash.py` — 22 tests
 - [x] `tests/test_runner_vampire.py` — 23 tests
 - [x] `tests/test_runner_cvc5.py` — 25 tests
+- [x] `tests/integration/test_runners.py` — 15 integration tests that invoke real binaries (E, Vampire, Lash, Z3, CVC5); skip if binary not installed; requires `SOLVERPY_BENCHMARKS`
 
 ## 4. Migrate trainer domains to GrackleDomain
 
