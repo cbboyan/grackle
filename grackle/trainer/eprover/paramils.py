@@ -1,6 +1,10 @@
 from ..paramils import ParamilsTrainer
 from .tuner.base import BaseTuner
 
+
+class EproverParamilsTrainer(ParamilsTrainer):
+   pass
+
 class EproverParamilsTunerTrainer(ParamilsTrainer):
    
    def __init__(self, runner, config, tuner):

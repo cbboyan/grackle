@@ -1,6 +1,7 @@
 from solverpy.solver.atp.eprover import E, E_BINARY, E_STATIC
 
 from .solverpy import SolverPyRunner
+from grackle.trainer.eprover.domain import HEURISTIC_CEFS
 
 
 E_FIXED_ARGS = "--delete-bad-limit=150000000 "
@@ -164,14 +165,59 @@ class EproverRunner(SolverPyRunner):
          eargs["sine"] = ""
 
       # given clause selection heuristic
-      slots = int(eargs["slots"])
-      cefs = []
-      for i in range(slots):
-         cefs += ["%s*%s" % (eargs["freq%d"%i], block2cef(eargs["cef%d"%i]))]
-      cefs.sort(key=lambda x: int(x.split("*")[0]))
-      eargs["heur"] = "-H'(%s)'" % ",".join(cefs)
+      if "heur0" in eargs:
+         # new indexed format: heur{i} is an index into HEURISTIC_CEFS
+         # always append FIFOWeight(ConstPrio) as the last CEF to ensure completeness
+         slots = int(eargs["slots"])
+         cefs = ["%s*%s" % HEURISTIC_CEFS[int(eargs["heur%d" % i])] for i in range(slots)]
+         cefs.append("1*FIFOWeight(ConstPrio)")
+         eargs["heur"] = "-H'(%s)'" % ",".join(cefs)
+      else:
+         # old block-encoded format: freq{i} + cef{i}
+         slots = int(eargs["slots"])
+         cefs = []
+         for i in range(slots):
+            cefs += ["%s*%s" % (eargs["freq%d"%i], block2cef(eargs["cef%d"%i]))]
+         cefs.sort(key=lambda x: int(x.split("*")[0]))
+         eargs["heur"] = "-H'(%s)'" % ",".join(cefs)
 
-      return E_FIXED_ARGS + (E_PROTO_ARGS % eargs)
+      # new optional args (absent from DEFAULTS; use .get() with E-default fallbacks)
+      ho_extra = ""
+      if eargs.get("strong_rw_inst", "0") == "1":
+         ho_extra += "--strong-rw-inst "
+      if eargs.get("no_eq_unfolding", "0") == "1":
+         ho_extra += "--no-eq-unfolding "
+      if eargs.get("sos_input_types", "0") == "1":
+         ho_extra += "--sos-uses-input-types "
+      neg_ext = eargs.get("neg_ext", "off")
+      if neg_ext != "off":
+         ho_extra += "--neg-ext=%s " % neg_ext
+      pos_ext = eargs.get("pos_ext", "off")
+      if pos_ext != "off":
+         ho_extra += "--pos-ext=%s " % pos_ext
+      ext_sup = eargs.get("ext_sup_max_depth", "-1")
+      if ext_sup != "-1":
+         ho_extra += "--ext-sup-max-depth=%s " % ext_sup
+      if eargs.get("lift_lambdas", "true") != "true":
+         ho_extra += "--lift-lambdas=false "
+      if eargs.get("local_rw", "false") == "true":
+         ho_extra += "--local-rw=true "
+      if eargs.get("fool_unroll", "true") != "true":
+         ho_extra += "--fool-unroll=false "
+      if eargs.get("inverse_recognition", "false") == "true":
+         ho_extra += "--inverse-recognition "
+      if eargs.get("replace_inj_defs", "false") == "true":
+         ho_extra += "--replace-inj-defs "
+      ho_ord = eargs.get("ho_order_kind", "lfho")
+      if ho_ord != "lfho":
+         ho_extra += "--ho-order-kind=%s " % ho_ord
+
+      sat_extra = ""
+      satcheck = eargs.get("satcheck", "none")
+      if satcheck != "none":
+         sat_extra = "--satcheck=%s --satcheck-proc-interval=5000 " % satcheck
+
+      return E_FIXED_ARGS + (E_PROTO_ARGS % eargs) + ho_extra + sat_extra
 
    def clean(self, params):
       params = convert(params)
@@ -184,6 +230,10 @@ class EproverRunner(SolverPyRunner):
       for param in params:
          if param.startswith("freq") or param.startswith("cef"):
             n = int(param.lstrip("freqcef"))
+            if n >= slots:
+               delete.append(param)
+         elif param.startswith("heur") and param[4:].isdigit():
+            n = int(param[4:])
             if n >= slots:
                delete.append(param)
 
