@@ -44,7 +44,7 @@ Removed `domains()` overrides from all paramils trainers — they now use the ba
 - [x] Migrate `trainer/vampire/` — `VampireDomain`, `VampireFullDomain`, `VampireCascDomain`; 24 tests
 - [x] Migrate `trainer/cvc5/` — `Cvc5BaseDomain`, `Cvc5Domain`; 25 tests
 - [x] Migrate `trainer/bitwuzla/domain.py` — `BitwuzlaDomain(GrackleDomain)`; 21 tests
-- [ ] Rewrite `trainer/eprover/` — new `GrackleDomain` subclasses + `MultiDomain` for staged tuning
+- [x] Rewrite `trainer/eprover/` — new `GrackleDomain` subclasses + `MultiDomain` for staged tuning; 56 tests
 
 ## 5. Add RamParILS trainer
 
@@ -52,6 +52,10 @@ Add `grackle/trainer/ramparils.py` as a drop-in alternative to `ParamilsTrainer`
 - Use `ramparils.specialize(strategy, scenario, cache_db, cores)` Python API
 - Same interface as `ParamilsTrainer` (`improve(state, conf, insts)`)
 - Add `RamparilsStageTrainer` alongside `ParamilsStageTrainer`
+
+- [x] Add `grackle/trainer/ramparils.py` — `RamparilsTrainer`, `RamparilsStageTrainer`
+- [x] Add `bin/grackle-ramparils-wrapper.py` — algo wrapper using `#%# RamParIls #%#` result format
+- [x] Add `ramparils` to `pyproject.toml` dependencies
 
 ## 6. Migrate evaluation to solverpy
 
@@ -74,8 +78,11 @@ Replace the current `Runner.runs()` multiprocessing pool with solverpy's evaluat
 
 ## 9. Migrate to solverpy monorepo
 
-- Move package into `~/repos/cbboyan/solverpy` as `packages/solverpy-grackle/`
-- Update imports, `setup.py` / `pyproject.toml`, and CI
+- [x] Move package into `~/repos/cbboyan/solverpy` as `packages/solverpy-grackle/`
+- [x] Add `pyproject.toml` following `solverpy-learn` pattern (name `solverpy-grackle`, depends on `solverpy` + `PyYAML`)
+- [x] Add grackle tests to root `pyproject.toml` testpaths
+- [x] Exclude ParamILS Ruby sources, SMAC files, `eprover.old/`, `eprover.newer/`, `examples/`
+- [x] Convert `bin/` scripts to proper entry points via `[project.scripts]` — `fly-grackle`, `grackle-paramils`, `grackle-ramparils`; entry point modules in `src/grackle/scripts/`; original scripts kept in `scripts/grackle/`
 
 ## 10. Documentation
 
