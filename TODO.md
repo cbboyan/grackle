@@ -4,8 +4,8 @@ Migration plan towards `solverpy-grackle` in the solverpy monorepo.
 
 ## 1. Remove CVC4
 
-- Delete `grackle/runner/cvc4.py`
-- Delete `grackle/trainer/cvc4/`
+- [x] Delete `grackle/runner/cvc4.py`
+- [x] Delete `grackle/trainer/cvc4/`
 
 ## 2. Migrate runners to solverpy
 
