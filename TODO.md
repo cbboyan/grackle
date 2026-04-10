@@ -9,27 +9,38 @@ Migration plan towards `solverpy-grackle` in the solverpy monorepo.
 
 ## 2. Migrate runners to solverpy
 
-Use `grackle/runner/z3.py` as the template. For each runner: replace `cmd()` + `process()` with an overridden `run()` that calls `self._solver.solve()`, `valid()`, and `solved()`.
+Add `grackle/runner/solverpy.py` with `SolverPyRunner(GrackleRunner)` — a generic base
+that implements `run()` and `success()` using `self._solver` (a solverpy instance) and
+a `RESOURCE_KEY` class attribute.  Subclasses only need to set `self._solver` in
+`__init__` and implement `args()`.
 
-- Rewrite `LashRunner` — use `solverpy.solver.atp.lash.Lash`
-- Rewrite `VampireRunner` — use `solverpy.solver.atp.vampire.Vampire`
-- Rewrite `Cvc5Runner` — use `solverpy.solver.smt.cvc5.Cvc5`
-- Rewrite `EproverRunner` — use `solverpy.solver.atp.eprover.E`; drop `pyprove` dependency
+Also: replace `PYPROVE_BENCHMARKS` with `SOLVERPY_BENCHMARKS` everywhere; replace
+`pyprove:` benchmark prefix in `state.py` with `solverpy:` using `bids.problems()`.
+
+- [x] Add `SolverPyRunner` base class (`grackle/runner/solverpy.py`)
+- [x] Refactor `Z3Runner` onto `SolverPyRunner`
+- [x] Rewrite `EproverRunner` — use `solverpy.solver.atp.eprover.E`; drop `pyprove` dependency
+- [ ] Rewrite `LashRunner` — use `solverpy.solver.atp.lash.Lash`
+- [ ] Rewrite `VampireRunner` — use `solverpy.solver.atp.vampire.Vampire`
+- [ ] Rewrite `Cvc5Runner` — use `solverpy.solver.smt.cvc5.Cvc5`
 
 ## 3. Tests for runners
 
-- Add `pytest` tests for each rewritten runner
-- Cover: `args()`/`clean()` output, `success()`, `run()` with a mocked solverpy solver
+- [x] `tests/test_runner_eprover.py` — 29 tests: `args()`, `clean()`, `success()`, `run()` with mocked solver
+- [x] `tests/test_runner_z3.py` — 28 tests: `args()`, `tactical()`, `success()`, `run()` with mocked solver
+- [ ] `tests/test_runner_lash.py`
+- [ ] `tests/test_runner_vampire.py`
+- [ ] `tests/test_runner_cvc5.py`
 
 ## 4. Migrate trainer domains to GrackleDomain
 
 Use `grackle/trainer/z3/options.py` as the template. Replace raw-string `PARAMS/CONDITIONS/FORBIDDENS` dicts with a proper `GrackleDomain` subclass.
 
-- Migrate `trainer/lash/domain.py`
-- Migrate `trainer/vampire/` (consolidate or keep `domain.py`, `domain_full.py`, `domain_casc.py` variants as separate classes)
-- Migrate `trainer/cvc5/` (consolidate or keep `domain_base/regular/uf/all` variants)
-- Migrate `trainer/bitwuzla/domain.py` (runner already has `DefaultDomain`; align trainer)
-- Rewrite `trainer/eprover/` — new `GrackleDomain` subclasses + `MultiDomain` for staged tuning
+- [ ] Migrate `trainer/lash/domain.py`
+- [ ] Migrate `trainer/vampire/` (consolidate or keep `domain.py`, `domain_full.py`, `domain_casc.py` variants as separate classes)
+- [ ] Migrate `trainer/cvc5/` (consolidate or keep `domain_base/regular/uf/all` variants)
+- [ ] Migrate `trainer/bitwuzla/domain.py` (runner already has `DefaultDomain`; align trainer)
+- [ ] Rewrite `trainer/eprover/` — new `GrackleDomain` subclasses + `MultiDomain` for staged tuning
 
 ## 5. Add RamParILS trainer
 
